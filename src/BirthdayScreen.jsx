@@ -31,6 +31,7 @@ import mom25 from './assets/rymomyoug.JPG';
 import mom26 from './assets/tia.JPG';
 import mom27 from './assets/us.JPG';
 import mom28 from './assets/us2.JPG';
+import confetti from 'canvas-confetti';
 
 
 
@@ -42,6 +43,14 @@ function BirthdayScreen() {
     }, 100); 
   }, []);
   
+  useEffect(() => {
+  confetti({
+    particleCount: 150,
+    spread: 80,
+    origin: { y: 0.6 },
+  });
+}, []);
+
   return (
     <div className="birthday-screen mom-bg">
       <h1 className="birthday-title fade-in">🌷 Happy Birthday, Mom!</h1>

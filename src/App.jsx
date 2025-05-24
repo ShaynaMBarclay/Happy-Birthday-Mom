@@ -1,21 +1,27 @@
-import { useState } from 'react';
-import './App.css'
-import EnvelopeScreen from "./EnvelopeScreen";
-import BirthdayScreen from "./BirthdayScreen";
-
+import { useRef, useState } from 'react';
+import EnvelopeScreen from './EnvelopeScreen';
+import BirthdayScreen from './BirthdayScreen';
+import birthdaySong from './assets/music.mp3';
+import './App.css';
 
 function App() {
-  const [isOpened, setIsOpened] = useState(false);
-  
+  const [opened, setOpened] = useState(false);
+  const audioRef = useRef(null);
+
+  const handleOpen = () => {
+    setOpened(true);
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => {
+        console.log("Autoplay blocked — user must interact again.");
+      });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white">
-        
-      {!isOpened ? (
-        <EnvelopeScreen onOpen={() => setIsOpened(true)} />
-      ) : (
-        <BirthdayScreen />
-      )}
-    </div>
+    <>
+      <audio ref={audioRef} src={birthdaySong} loop />
+      {!opened ? <EnvelopeScreen onOpen={handleOpen} /> : <BirthdayScreen />}
+    </>
   );
 }
 
