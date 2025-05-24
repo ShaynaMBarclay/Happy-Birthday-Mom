@@ -220,6 +220,21 @@ html, body {
   user-select: none;
 }
 
+@keyframes shake {
+   0% { transform: rotate(0deg); }
+  5% { transform: rotate(2deg); }
+  10% { transform: rotate(-2deg); }
+  15% { transform: rotate(2deg); }
+  20% { transform: rotate(-2deg); }
+  25% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.envelope-shake {
+  animation: shake 1s ease-in-out infinite;
+}
+
+
 /* Tablets (768px and below) */
 @media (max-width: 768px) {
   .birthday-title {
