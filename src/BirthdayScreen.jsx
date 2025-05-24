@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import HeartsBackground from "./HeartsBackground";
 import 'swiper/css'; 
 import 'swiper/css/autoplay';
 import mom1 from './assets/2010.JPG';
@@ -56,6 +57,7 @@ function BirthdayScreen() {
 
   return (
     <div className="birthday-screen mom-bg">
+        <HeartsBackground />
       <h1 className="birthday-title fade-in">🌷 Happy Birthday, Mom!</h1>
 
       <p className="birthday-message fade-in delay-1">
