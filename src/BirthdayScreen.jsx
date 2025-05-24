@@ -48,8 +48,11 @@ function BirthdayScreen() {
     particleCount: 150,
     spread: 80,
     origin: { y: 0.6 },
+    colors: ['#ff69b4', '#ff1493', '#ffb6c1', '#ffc0cb'], 
   });
 }, []);
+
+
 
   return (
     <div className="birthday-screen mom-bg">
@@ -68,7 +71,7 @@ function BirthdayScreen() {
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           loop={true}
         >
-          {/* Replace these with your own image URLs */}
+          
            <SwiperSlide><img src={mom1} alt="Mom 1" /></SwiperSlide>
           <SwiperSlide><img src={mom2} alt="Mom 2" /></SwiperSlide>
           <SwiperSlide><img src={mom3} alt="Mom 3" /></SwiperSlide>
