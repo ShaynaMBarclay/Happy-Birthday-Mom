@@ -1,0 +1,299 @@
+/* Birthday Screen*/
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Fredoka:wght@300..700&family=Lobster&family=Playwrite+HU:wght@100..400&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+  background: #ffffff; 
+   min-height: 100vh;
+}
+
+
+.birthday-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 30%, #a6a0ff, #4947df);
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Cinzel', serif;
+}
+
+/* Starry background with subtle purple shimmer */
+.birthday-screen::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.30;
+  filter: hue-rotate(270deg) brightness(10);
+  animation: twinkle 30s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+
+@keyframes twinkle {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-200px, -200px); } 
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(80px); } /* from 40px */
+  70% { opacity: 1; transform: translateY(-10px); } /* overshoot */
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+
+.birthday-title {
+  font-size: 4rem;
+  font-family: "Playwrite HU", cursive;
+  color: #f2fb92;
+  text-shadow:
+    0 0 8px #e8fc69,
+    0 0 20px #d9e25e87,
+    0 0 30px #f3f4b4bf;
+  margin-bottom: 0.7rem;
+  z-index: 1;
+
+  animation: slideInTitle 2.5s ease-out forwards;
+}
+
+@keyframes slideInTitle {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw) scale(0.95);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(15px) scale(1.02); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+
+.birthday-message {
+  max-width: 1000px;
+  font-size: 1.3rem;
+  font-family: "Fredoka", sans-serif;
+  font-style: italic;
+  color: #f3ff74;
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+.sign-card {
+  background: rgba(166, 126, 247, 0.3);
+  font-family: "Fredoka", sans-serif;
+  border-radius: 15px;
+  padding: 0.6rem;
+  max-width: 550px;
+  margin: 0 auto 2.7rem;
+  box-shadow:
+    0 0 20px #9f7affaa,
+    inset 0 0 15px #b07eff55;
+  color: #f6f887;
+  backdrop-filter: blur(12px);
+  border: 1px solid #f4ff90aa;
+  z-index: 1;
+}
+
+.mom-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #cfa3ff;
+  text-shadow: 0 0 8px #b07eff;
+}
+
+.carousel-container {
+  max-width: 400px; 
+  margin: 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-container img {
+  width: 250px;        
+  height: 250px;        
+  object-fit: cover;    
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Envelope screen */
+.envelope-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #fff269); 
+
+  text-align: center;
+  font-family: "Playwrite HU", cursive;
+  position: relative;
+  overflow-x: hidden; 
+  overflow: hidden;
+  padding: 1rem;
+  
+}
+
+/* Envelope card with "paper" look */
+.envelope-card {
+  position: relative;
+  background: linear-gradient(145deg, #9bcfff, #ffffff); 
+  color: #eade5a;
+  padding: 3rem 4rem;
+  border-radius: 1.2rem;
+  box-shadow:
+    inset 0 0 15px #7ea6fb4f,
+    0 8px 20px rgba(126, 156, 233, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500;
+  font-size: 1.5rem;
+  max-width: 500px;
+  user-select: none;
+  z-index: 10;
+  margin-top: 4rem;
+}
+
+/* Triangle flap shape on top */
+.envelope-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 60px solid #9bcfff; /* flap color */
+  border-radius: 8px 8px 0 0;
+  box-shadow: inset 0 -5px 15px #907cf247;
+  z-index: -1;
+}
+
+/* Hover effect */
+.envelope-card:hover {
+  transform: scale(1.11) rotate(1deg);
+  box-shadow:
+    inset 0 0 20px #6889ff30,
+    0 12px 30px rgba(62, 81, 255, 0.568);
+}
+
+/* Text inside the card */
+.envelope-card h1,
+.envelope-card p {
+  margin: 0;
+  user-select: none;
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .birthday-title {
+    font-size: 2.8rem;
+  }
+
+  .birthday-message {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .sign-card {
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .spotify-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .envelope-card {
+    padding: 2rem;
+    font-size: 1.4rem;
+  }
+
+  .envelope-card::before {
+    top: -50px;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 50px solid #2e0030;
+  }
+}
+
+/* Phones (480px and below) */
+@media (max-width: 480px) {
+  .birthday-title {
+    font-size: 2rem;
+  }
+
+  .birthday-message {
+    font-size: 1rem;
+  }
+
+  .sign-card {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .lilith-title {
+    font-size: 1.3rem;
+  }
+
+  .spotify-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .birthday-screen::after {
+    font-size: 9rem;
+    top: 1rem;
+    right: 2rem;
+  }
+
+  .envelope-card {
+    padding: 3rem;
+    font-size: 1.2rem;
+    max-height: 90vh;
+  }
+
+  .envelope-card::before {
+    top: -40px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 40px solid #2e0030;
+  }
+}
